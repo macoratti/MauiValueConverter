@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiValueConverter.Views.AlunosView"
+             xmlns:converters="clr-namespace:MauiValueConverter.Services"
+             Title="AlunosView">
+
+    <ContentPage.Resources>
+        <converters:ConverteDoubleToColor x:Key="colorConverter" />
+    </ContentPage.Resources>
+
+    <ListView x:Name="lvAlunos" HasUnevenRows="True">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal" Padding="10">
+                        <Label Text="{Binding Nome}" 
+                            TextColor="Black" 
+                            FontSize="30"
+                            HorizontalOptions="StartAndExpand"/>
+                        <Label Text="{Binding Nota}" 
+                              TextColor="{Binding Nota, Converter={StaticResource colorConverter}}"
+                             FontSize="30" 
+                             FontAttributes="Bold"
+                             HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
+</ContentPage>
